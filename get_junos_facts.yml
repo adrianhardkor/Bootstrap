@@ -8,7 +8,6 @@
 
   tasks:
     - name: Retrieve facts from device running Junos OS
-      hosts: WOPR_SB
       juniper_junos_facts:
         host: "{{ inventory_hostname }}"
         savedir: "{{ playbook_dir }}"
