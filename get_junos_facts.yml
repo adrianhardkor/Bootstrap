@@ -1,6 +1,5 @@
 ---
 - name: Get Device Facts
-  hosts: 10.88.232.8
   roles:
     - Juniper.junos
   connection: local
