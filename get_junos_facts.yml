@@ -1,10 +1,7 @@
 ---
 - name: Get Device Facts
-  hosts: WOPR-SB
-  roles:
-    - Juniper.junos
-  connection: local
-  gather_facts: no
+  hosts: all
+  gather_facts: yes
 
   tasks:
     - name: Retrieve facts from device running Junos OS
