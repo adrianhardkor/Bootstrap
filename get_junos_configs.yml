@@ -1,0 +1,18 @@
+---
+- name: "Get Junos OS configuration."
+  hosts: 10.88.232.8
+  roles:
+    - Juniper.junos
+  connection: local
+  gather_facts: yes
+
+  tasks:
+    - name: "Get committed configuration"
+      juniper_junos_config:
+        retrieve: "committed"
+        format: "set"
+        #dest: "{{ inventory_hostname }}-config"
+      register: response
+    - name: "Print result"
+      debug:
+        var: response
