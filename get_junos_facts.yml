@@ -1,5 +1,6 @@
 ---
 - name: Get Device Facts
+  hosts: WOPR-SB
   roles:
     - Juniper.junos
   connection: local
