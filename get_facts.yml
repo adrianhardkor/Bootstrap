@@ -4,3 +4,9 @@
   gather_facts: yes
 
   tasks:
+  - name: Ensure chrony is running.
+    service:
+      name: sshd
+      state: started
+      enabled: yes
+
