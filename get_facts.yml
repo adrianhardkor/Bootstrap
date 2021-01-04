@@ -1,0 +1,6 @@
+---
+- name: Get Device Facts
+  connection: local
+  gather_facts: yes
+
+  tasks:
