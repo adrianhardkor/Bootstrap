@@ -3,14 +3,15 @@
   hosts: all
   roles:
     - Juniper.junos
+<<<<<<< HEAD
+=======
   connection: local
+>>>>>>> e5d6d187d48edd76083170ba4bf08af805bd8611
   gather_facts: yes
 
   tasks:
     - name: Retrieve facts from device running Junos OS
       juniper_junos_facts:
-        host: "{{ inventory_hostname }}"
-        savedir: "{{ playbook_dir }}"
     - name: Print version
       debug:
         var: junos.version
