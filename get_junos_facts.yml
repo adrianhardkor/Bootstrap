@@ -4,6 +4,7 @@
   roles:
     - Juniper.junos
   gather_facts: yes
+  connection: local
 
   tasks:
     - name: Retrieve facts from device running Junos OS
