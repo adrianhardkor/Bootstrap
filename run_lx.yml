@@ -6,3 +6,8 @@
   tasks:
   - name: Run local expect script via shell
     command: expect ./ts_show.tcl 10.88.241.1
+    register: response
+  - name: "Print result"
+    debug:
+      var: response
+
