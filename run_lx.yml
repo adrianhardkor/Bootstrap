@@ -1,0 +1,3 @@
+- name: Run local expect script via shell
+  shell: expect ./ts_show.tcl 10.88.241.1
+
