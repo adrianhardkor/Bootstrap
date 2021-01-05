@@ -7,4 +7,4 @@
   tasks:
     - name: collect default set of facts
       junipernetworks.junos.junos_facts:
-        gather_network_resources: all
+        gather_network_resources: l3_interfaces
