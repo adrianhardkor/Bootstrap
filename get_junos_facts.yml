@@ -1,6 +1,9 @@
 ---
 - name: Get Device Facts
   hosts: all
+  roles:
+    - Juniper.junos
+  connection: local
   gather_facts: yes
 
   tasks:
