@@ -1,0 +1,11 @@
+---
+- name: Get Device Facts
+  hosts: all
+  gather_facts: yes
+
+  tasks:
+  - name: Ensure sshd is running.
+    service:
+      name: sshd
+      state: started
+      enabled: yes

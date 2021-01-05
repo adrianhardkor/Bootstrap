@@ -1,0 +1,10 @@
+---
+- name: Get Device Facts
+  hosts: all
+  gather_facts: no
+  connection: local
+
+  tasks:
+    - name: collect default set of facts
+      junipernetworks.junos.junos_facts:
+        gather_network_resources: l3_interfaces
