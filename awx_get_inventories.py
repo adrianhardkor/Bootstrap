@@ -8,5 +8,5 @@ wc.jd(wc.wcheader)
 import awx
 
 ansible = awx.AWX('10.88.48.33', 'admin', 'password')
-# awx.GetInventory()
+# ansible.GetInventory()
 print(ansible.RunPlaybook('Bootstrap'))
