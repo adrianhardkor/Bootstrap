@@ -3,8 +3,7 @@
   hosts: all
   roles:
     - Juniper.junos
-  gather_facts: no
-  connection: local
+  gather_facts: yes
 
   tasks:
     - name: Retrieve facts from device running Junos OS
