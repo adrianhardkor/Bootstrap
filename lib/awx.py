@@ -1,8 +1,5 @@
-#!/usr/local/bin/python3
 import wcommon as wc
-wc.jd(wc.wcheader)
-
-import json,requests,ipaddress
+import json,requests,ipaddress,time
 class AWX():
 	def __init__(self, IP, user, pword):
 		self.user = user
@@ -54,6 +51,31 @@ class AWX():
 		if lst == [] or lst == [''] or lst == ['---']:
 			return({})
 		return({lst[i]: lst[i + 1] for i in range(0, len(lst), 2)})
+	def RunPlaybook(self,playbook_name):
+		# ASYNC BY DEFAULT
+		playbook_start = wc.timer_index_start()
+		data = json.loads(wc.REST_POST('http://' + self.IP + '/api/v2/job_templates/' + playbook_name + '/launch/', user=self.user, pword=self.pword))
+		status_url = data['url']
+		data['status'] = 'Running'
+		job = str(data['job'])
+		playbook = data['playbook']
+		inventory = str(data['inventory'])
+		while data['status'] not in ['successful','failed']:
+			time.sleep(5)
+			data = json.loads(wc.REST_GET('http://' + self.IP + status_url, user=self.user, pword=self.pword))
+			print('  '.join([job,playbook,inventory,data['status'],'',str(wc.timer_index_since(playbook_start))]))
+		if data['status'] == 'successful':
+			endpoint = data['related']['stdout']
+		else:
+			endpoint = data['related']['stderr']
+		return(json.loads(wc.REST_GET('http://' + self.IP + endpoint, user=self.user, pword=self.pword))['content'])
+		# ['related']['stdout']
+		# POST https://your.tower.server/api/v2/job_templates/<your job template id>/launch/ with any required data gathered during the previous step(s). The variables that can be passed in the request data for this action include the following.
+		# extra_vars: A string that represents a JSON or YAML formatted dictionary (with escaped parentheses) which includes variables given by the user, including answers to survey questions
+		# job_tags: A string that represents a comma-separated list of tags in the playbook to run
+		# limit: A string that represents a comma-separated list of hosts or groups to operate on
+		# inventory: A integer value for the foreign key of an inventory to use in this job run
+		# credential: A integer value for the foreign key of a credential to use in this job run
 	def GetInventory(self):
 		_INV = {}
 		data = json.loads(wc.REST_GET('http://' + self.IP + '/api/v2/inventories', user=self.user, pword=self.pword))
@@ -103,7 +125,3 @@ class AWX():
 					'facts':interestingfact}
 		wc.jd(_INV)
 		return()
-
-awx = AWX('10.88.48.33', 'admin', 'password')
-awx.GetInventory()
-
