@@ -3,10 +3,6 @@
   hosts: all
   roles:
     - Juniper.junos
-<<<<<<< HEAD
-=======
-  connection: local
->>>>>>> e5d6d187d48edd76083170ba4bf08af805bd8611
   gather_facts: yes
 
   tasks:
