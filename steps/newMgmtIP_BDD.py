@@ -17,7 +17,7 @@ def step_impl(context):
 def step_impl(context):
 	wc.jd(wc.env_dict)
 	context.ip = wc.env_dict['cidr'].split(' /')[0]
-	context.pingable = bool(wc.is_pingable(ip))
+	context.pingable = bool(wc.is_pingable(context.ip))
 	pass
 
 @then(u'I expect response "{expectationBoolean}"')
