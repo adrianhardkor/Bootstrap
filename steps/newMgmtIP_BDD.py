@@ -11,8 +11,6 @@ wc.jd(wc.wcheader)
 
 @given(u'Bootstrap Ran')
 def step_impl(context):
-	project = Stc.init('traffictest.py')
-	Stc.connectChassis(ARC)
 	assert True
 
 @when(u'I try to ping NewMgmtIP from Jenkinsfile-paramter-input cidr')
