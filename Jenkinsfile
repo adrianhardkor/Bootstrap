@@ -88,12 +88,13 @@ node() {
                 }
             }'''
             echo info
-            def output = step([$class: 'XrayImportBuilder', 
+            def output = sh(returnStdout: true, script: step([$class: 'XrayImportBuilder', 
             endpointName: '/cucumber/multipart', 
             importFilePath: 'reports/cucumber.json', 
             importInfo: info, 
             inputInfoSwitcher: 'fileContent', 
-            serverInstance: xrayConnectorId])
+            serverInstance: xrayConnectorId]))
+
             echo "\n\n\n output = ${output}"
         }
     }
