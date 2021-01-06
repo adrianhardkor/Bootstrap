@@ -10,5 +10,8 @@ import awx
 # wc.jd(wc.argv_dict)
 ansible = awx.AWX(os.environ['AWX_IP'], os.environ['AWX_USER'], os.environ['AWX_PASS'])
 # ansible.GetInventory()
-print(ansible.RunPlaybook('Bootstrap',args={'ip':'override'}))
+
+# Run Playbook=AWX_PLAYBOOK_NAME
+# Input/Overload variables == BUBBLED TO JENKINS PARAMETERS (ARGV PROVIDED VIA JENKINSFILE)
+print(ansible.RunPlaybook(argv_dict['Playbook'],args=argv_dict)
 

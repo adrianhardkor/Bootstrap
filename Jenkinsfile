@@ -10,7 +10,7 @@ node() {
 		SERVER_JENKINS = "WOPR-PROD-JENKINS"
 	}
 	def passthruString = sh(script: "printenv", returnStdout: true)
-	passthruString = passthruString.replaceAll('\n',' jenkins_')
+	passthruString = passthruString.replaceAll('\n',' ')
 	stage("Prepare Workspace") {
 		echo "\n\n\n*** Prepare Workspace on ${SERVER_JENKINS} ***"
 		cleanWs()
@@ -25,7 +25,8 @@ node() {
 		sh "ls -l"
 	}
 	stage("AWX Runner") {
-            sh "python3 ${orchPy} ${passthruString}"
+            def awx_output = sh(script: "python3 ${orchPy} ${passthruString}", returnStdout: true)
+            echo "${awx_output}"
         }
 	stage("BDD-Behave") {
 		echo "\n\n\n*** BDD-Behave-Python3 on ${SERVER_JENKINS} ***"
