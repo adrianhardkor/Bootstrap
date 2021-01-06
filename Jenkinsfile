@@ -81,19 +81,19 @@ node() {
                     },
                     "labels":''' + labels + ''',
                     "description":"''' + description + '''",
-                    "summary": "${env.JOB_NAME} - Automated Regression Execution @ ''' + env.BUILD_TIME + ' ' + environment + ''' " ,
+                    "summary": "env.JOB_NAME + ''' - Automated Regression Execution @ ''' + env.BUILD_TIME + ' ' + environment + ''' " ,
                     "issuetype": {
                         "id": "''' + testExecutionFieldId + '''"
                     }
                 }
             }'''
             echo info
-            def output = sh(returnStdout: true, script: step([$class: 'XrayImportBuilder', 
+            step([$class: 'XrayImportBuilder', 
             endpointName: '/cucumber/multipart', 
             importFilePath: 'reports/cucumber.json', 
             importInfo: info, 
             inputInfoSwitcher: 'fileContent', 
-            serverInstance: xrayConnectorId]))
+            serverInstance: xrayConnectorId])
 
             echo "\n\n\n output = ${output}"
         }
