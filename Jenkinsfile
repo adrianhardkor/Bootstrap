@@ -28,7 +28,6 @@ node() {
                     cd lib/
                     git clone ${GIT_SHARED_LIB}
                     cd ..
-                    ls -l lib/
                     ls -l
                 """
                 echo "\n\n\n"

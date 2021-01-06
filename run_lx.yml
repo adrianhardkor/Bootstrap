@@ -6,6 +6,7 @@
   - name: CLONE THE ARC-SHARED REPO
     git:
       repo: "{{ GIT_SHARED_LIB }}"
+      dest: ./lib/
     register: git_response
   - name: "Print result"
     debug:
