@@ -1,5 +1,5 @@
 #!/usr/bin/expect
-source "./lib/wc.tcl"
+source "./lib/shared_libs/wc.tcl"
 set_debug 1
 
 set ts_ip [lindex $argv 0]

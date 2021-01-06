@@ -2,7 +2,7 @@ import os
 from behave import given, when, then
 import sys
 # context: where behave runs
-sys.path.insert(1, 'lib/')
+sys.path.insert(1, './lib/shared_libs/')
 import wcommon as wc
 wc.jenkins_header(); # load inputs from Jenkinsfile
 wc.wcheader['packages']['wc'] = wc.__file__
