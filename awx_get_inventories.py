@@ -9,4 +9,4 @@ import awx
 
 ansible = awx.AWX('10.88.48.33', 'admin', 'password')
 # ansible.GetInventory()
-print(ansible.RunPlaybook('Bootstrap'))
+print(ansible.RunPlaybook('Bootstrap',args={'ip':'override'}))

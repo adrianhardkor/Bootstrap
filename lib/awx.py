@@ -51,12 +51,18 @@ class AWX():
 		if lst == [] or lst == [''] or lst == ['---']:
 			return({})
 		return({lst[i]: lst[i + 1] for i in range(0, len(lst), 2)})
-	def RunPlaybook(self,playbook_name):
+	def RunPlaybook(self,playbook_name,args={}):
 		# ASYNC BY DEFAULT
 		playbook_start = wc.timer_index_start()
-		data = json.loads(wc.REST_POST('http://' + self.IP + '/api/v2/job_templates/' + playbook_name + '/launch/', user=self.user, pword=self.pword))
+		if args != {}:
+			args = wc.jd({'extra_vars':args})
+		data = json.loads(wc.REST_POST('http://' + self.IP + '/api/v2/job_templates/' + playbook_name + '/launch/', user=self.user, pword=self.pword, args=args))
 		status_url = data['url']
 		data['status'] = 'Running'
+		if 'job' not in data.keys():
+			# SOMETHING WENT WRONG
+			wc.jd(data)
+			return('')
 		job = str(data['job'])
 		playbook = data['playbook']
 		inventory = str(data['inventory'])
