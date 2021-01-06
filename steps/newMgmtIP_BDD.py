@@ -15,7 +15,7 @@ def step_impl(context):
 
 @when(u'I try to ping NewMgmtIP from Jenkinsfile-paramter-input cidr')
 def step_impl(context):
-	context.ip = wc.env_dict['cidr'].split(' /')[0]
+	context.ip = wc.env_dict['cidr'].split('/')[0]
 	context.pingable = bool(wc.is_pingable(context.ip))
 	pass
 
