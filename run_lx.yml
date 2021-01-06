@@ -2,12 +2,7 @@
 - name: Run local expect script via shell
   hosts: all
   gather_facts: no
-    - name: CLONE THE GIT REPO
-      git:
-        repo: https://github.com/termlen0/test_repo.git
-        dest: /tmp/my_test_repo
   tasks:
-
   - name: CLONE THE ARC-SHARED REPO
     git:
       repo: {{ GIT_SHARED_LIB }}
@@ -15,11 +10,9 @@
   - name: "Print result"
     debug:
       var: git_response
-
   - name: Run local expect script via shell
     command: expect ./src/ts_show.tcl {{ lx_ip }}
     register: response
   - name: "Print result"
     debug:
       var: response
-
