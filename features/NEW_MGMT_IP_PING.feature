@@ -3,4 +3,4 @@ Feature: Test Ping Functionality
   Scenario: PING_EXPECTED_TRUE
     Given Bootstrap Ran
     When I try to ping NewMgmtIP from Jenkinsfile-paramter-input cidr
-    Then I expect response "true"
+    Then I expect response "false"
