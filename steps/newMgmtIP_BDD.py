@@ -11,20 +11,20 @@ wc.jd(wc.wcheader)
 
 @given(u'Bootstrap Ran')
 def step_impl(context):
-        project = Stc.init('traffictest.py')
-        Stc.connectChassis(ARC)
-        assert True
+	project = Stc.init('traffictest.py')
+	Stc.connectChassis(ARC)
+	assert True
 
 @when(u'I try to ping NewMgmtIP from Jenkinsfile-paramter-input cidr')
 def step_impl(context):
 	ip = wc.env_dict['cidr'].split('/')[0] 
-        context.ip = ip
-        context.pingable = bool(wc.is_pingable(ip))
-        pass
+	context.ip = ip
+	context.pingable = bool(wc.is_pingable(ip))
+	pass
 
 @then(u'I expect response "{expectationBoolean}"')
 def step_impl(context, expectationBoolean):
-        expectationBoolean = wc.bdd_bool_inp(expectationBoolean)
-        print('\t'.join(['',context.ip,'actual:' + str(context.pingable),'','expected:' + str(expectationBoolean)]))
-        assert context.pingable == expectationBoolean
+	expectationBoolean = wc.bdd_bool_inp(expectationBoolean)
+	print('\t'.join(['',context.ip,'actual:' + str(context.pingable),'','expected:' + str(expectationBoolean)]))
+	assert context.pingable == expectationBoolean
 
