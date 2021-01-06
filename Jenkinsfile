@@ -22,9 +22,11 @@ node() {
 		def branches = scm.branches[0].name
 		def branch2 = branches.split("/")[1]
 		git branch: branch2, url: repoURL
+                sh "ls -l"
                 echo " ** REPO SHARED LIBRARIES FOR ALL GIT-ARC PROJECTS ** "
                 git branch: "main", url: GIT_SHARED_LIB, dir: './lib/'
 		sh "ls -l"
+                echo "\n\n\n"
 	}
 	stage("AWX Runner") {
             def awx_output = sh(script: "python3 ${orchPy} ${passthruString}", returnStdout: true)
