@@ -7,6 +7,7 @@ wc.jenkins_header(); # load inputs from Jenkinsfile
 wc.jd(wc.wcheader)
 import awx
 
+wc.jd(wc.argv_dict)
 ansible = awx.AWX('10.88.48.33', 'admin', 'password')
 # ansible.GetInventory()
 print(ansible.RunPlaybook('Bootstrap',args={'ip':'override'}))

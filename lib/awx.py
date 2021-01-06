@@ -55,7 +55,7 @@ class AWX():
 		# ASYNC BY DEFAULT
 		playbook_start = wc.timer_index_start()
 		if args != {}:
-			args = wc.jd({'extra_vars':args})
+			args = json.dumps({'extra_vars':args})
 		data = json.loads(wc.REST_POST('http://' + self.IP + '/api/v2/job_templates/' + playbook_name + '/launch/', user=self.user, pword=self.pword, args=args))
 		status_url = data['url']
 		data['status'] = 'Running'
