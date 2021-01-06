@@ -7,7 +7,6 @@ import wcommon as wc
 wc.jenkins_header(); # load inputs from Jenkinsfile
 wc.wcheader['packages']['wc'] = wc.__file__
 wc.jd(wc.wcheader)
-wc.jd(wc.argv_dict)
 
 
 @given(u'Bootstrap Ran')
@@ -17,10 +16,8 @@ def step_impl(context):
 @when(u'I try to ping NewMgmtIP from Jenkinsfile-paramter-input cidr')
 def step_impl(context):
 	# get IP from printenv
-	context.ip = 'blah'
-	context.pingable = True
-	# context.ip = ip
-	# context.pingable = bool(wc.is_pingable(ip))
+	context.ip = wc.argv_dict['cidr'].split(' /')[0]
+	context.pingable = bool(wc.is_pingable(ip))
 	pass
 
 @then(u'I expect response "{expectationBoolean}"')

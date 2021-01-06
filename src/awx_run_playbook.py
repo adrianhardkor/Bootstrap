@@ -13,5 +13,5 @@ ansible = awx.AWX(os.environ['AWX_IP'], os.environ['AWX_USER'], os.environ['AWX_
 
 # Run Playbook=AWX_PLAYBOOK_NAME
 # Input/Overload variables == BUBBLED TO JENKINS PARAMETERS (ARGV PROVIDED VIA JENKINSFILE)
-print(ansible.RunPlaybook(argv_dict['Playbook'],args=argv_dict))
+print(ansible.RunPlaybook(wc.argv_dict['Playbook'],args=argv_dict))
 
