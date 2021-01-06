@@ -30,12 +30,8 @@ node() {
         }
 	stage("BDD-Behave") {
 		echo "\n\n\n*** BDD-Behave-Python3 on ${SERVER_JENKINS} ***"
+                sh "/var/lib/jenkins/.pyenv/shims/behave -v"
 		try {
-			sh """
-				export SERVER_JENKINS=${SERVER_JENKINS}
-				export STC_PRIVATE_INSTALL_DIR=${STC_INSTALL}
-				/var/lib/jenkins/.pyenv/shims/behave -v
-			"""
 			sh """
 				export SERVER_JENKINS=${SERVER_JENKINS}
 				export STC_PRIVATE_INSTALL_DIR=${STC_INSTALL}
