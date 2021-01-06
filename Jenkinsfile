@@ -26,10 +26,16 @@ node() {
 	}
 	stage("AWX Runner") {
             def awx_output = sh(script: "python3 ${orchPy} ${passthruString}", returnStdout: true)
+            echo "${awx_output}"
         }
 	stage("BDD-Behave") {
 		echo "\n\n\n*** BDD-Behave-Python3 on ${SERVER_JENKINS} ***"
 		try {
+			sh """
+				export SERVER_JENKINS=${SERVER_JENKINS}
+				export STC_PRIVATE_INSTALL_DIR=${STC_INSTALL}
+				/var/lib/jenkins/.pyenv/shims/behave -v
+			"""
 			sh """
 				export SERVER_JENKINS=${SERVER_JENKINS}
 				export STC_PRIVATE_INSTALL_DIR=${STC_INSTALL}
