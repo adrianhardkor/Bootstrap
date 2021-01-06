@@ -88,14 +88,13 @@ node() {
                 }
             }'''
             echo info
-            step(
-                [$class: 'XrayImportBuilder', 
-                endpointName: '/cucumber/multipart', 
-                importFilePath: 'reports/cucumber.json', 
-                importInfo: info, 
-                inputInfoSwitcher: 'fileContent', 
-                serverInstance: xrayConnectorId]
-                echo "\n\n\n ATTEMPT: ${XRAY_RAW_RESPONSE}")
+            def output = step([$class: 'XrayImportBuilder', 
+            endpointName: '/cucumber/multipart', 
+            importFilePath: 'reports/cucumber.json', 
+            importInfo: info, 
+            inputInfoSwitcher: 'fileContent', 
+            serverInstance: xrayConnectorId])
+            echo "\n\n\n output = ${output}"
         }
     }
     catch(e) {                           
