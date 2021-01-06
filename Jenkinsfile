@@ -94,6 +94,7 @@ node() {
             importInfo: info, 
             inputInfoSwitcher: 'fileContent', 
             serverInstance: xrayConnectorId])
+            echo "\n\n\n ATTEMPT: ${XRAY_RAW_RESPONSE}"
         }
     }
     catch(e) {                           
