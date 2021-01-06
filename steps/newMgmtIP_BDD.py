@@ -16,7 +16,7 @@ def step_impl(context):
 @when(u'I try to ping NewMgmtIP from Jenkinsfile-paramter-input cidr')
 def step_impl(context):
 	# get IP from printenv
-	print(wc.argv_dict.keys())
+	print(wc.exec2('printenv'))
 	context.ip = wc.argv_dict['cidr'].split(' /')[0]
 	context.pingable = bool(wc.is_pingable(ip))
 	pass
