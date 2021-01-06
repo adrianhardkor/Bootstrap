@@ -26,7 +26,6 @@ node() {
 	}
 	stage("AWX Runner") {
             def awx_output = sh(script: "python3 ${orchPy} ${passthruString}", returnStdout: true)
-            # echo "${awx_output}"
         }
 	stage("BDD-Behave") {
 		echo "\n\n\n*** BDD-Behave-Python3 on ${SERVER_JENKINS} ***"
