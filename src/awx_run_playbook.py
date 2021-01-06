@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import os
 import sys
-sys.path.insert(1, './lib/')
+sys.path.insert(1, './lib/shared_libs/')
 import wcommon as wc
 wc.jenkins_header(); # load inputs from Jenkinsfile
 wc.jd(wc.wcheader)
