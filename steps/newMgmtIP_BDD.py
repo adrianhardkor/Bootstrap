@@ -24,5 +24,8 @@ def step_impl(context):
 def step_impl(context, expectationBoolean):
 	expectationBoolean = wc.bdd_bool_inp(expectationBoolean)
 	print('\t'.join(['',context.ip,'actual:' + str(context.pingable),'','expected:' + str(expectationBoolean)]))
-	assert context.pingable == expectationBoolean
+	if context.pingable == expectationBoolean:
+		assert True
+	else:
+		assert False
 
