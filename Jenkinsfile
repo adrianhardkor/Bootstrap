@@ -18,8 +18,6 @@ node() {
             sh "ls -l"
             env.WORKSPACE_LOCAL = sh(returnStdout: true, script: 'pwd').trim()
             env.BUILD_TIME = "${BUILD_TIMESTAMP}"
-            def HUDSON_URL = "${env.HUDSON_URL}"
-            def SERVER_JENKINS = ""
             echo "Workspace set to:" + env.WORKSPACE_LOCAL
             echo "Build time:" + env.BUILD_TIME
         }
