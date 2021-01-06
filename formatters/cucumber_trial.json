@@ -1,0 +1,42 @@
+Feature: Test Ping Functionality # features/HAPPY.feature:1
+
+  @demo @XT-229
+  Scenario: PING_EXPECTED_TRUE       # features/HAPPY.feature:3
+    Given Spirent config built       # steps/traffictest.py:14
+      Traceback (most recent call last):
+        File "/home/akrygows/.local/lib/python3.8/site-packages/behave/model.py", line 1416, in run
+          match.run(runner.context)
+        File "/home/akrygows/.local/lib/python3.8/site-packages/behave/model.py", line 1858, in run
+          self.func(context, *args, **kwargs)
+        File "steps/traffictest.py", line 19, in step_impl
+          Stc.port_config(project,port)
+        File "lib/Stc.py", line 30, in port_config
+          Port_1 = stc.create("Port", under=hProject, \
+        File "lib/StcPython.py", line 75, in create
+          return self.stcInt.salCreate(_type, svec)
+      RuntimeError: in create: unable to create unknown class "Port"
+      
+      Captured stdout:
+      {
+          "Active": "true",
+          "Name": "StcSystem 1",
+          "Version": "5.16.0166.0000",
+          "children": "activeeventmanager1 commandstatusupdate1 userlogresult1 automationoptions project1 clientinfo1"
+      }
+      Timestamp = '1525.93ms'
+      
+      
+      {
+          "Active": "true",
+          "ConfigurationFileName": "Untitled.tcc",
+          "Name": "adrian",
+          "SelectedTechnologyProfiles": "dhcp",
+          "TestMode": "L2L3",
+          "children": "tags1",
+          "parent": "system1"
+      }
+      Timestamp = '1526.29ms'
+
+    When I try to ping "10.44.0.100" # None
+    Then I expect response "true"    # None
+

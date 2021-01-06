@@ -1,0 +1,17 @@
+setuptools
+datetime
+ipaddress
+requests
+paramiko
+six
+gitpython
+urllib3
+uuid
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib
+behave
+behave2cucumber
+argparse
+jsonschema
+behave-py3

@@ -33,11 +33,6 @@ node() {
 			sh """
 				export SERVER_JENKINS=${SERVER_JENKINS}
 				export STC_PRIVATE_INSTALL_DIR=${STC_INSTALL}
-				python3 ./u.py
-			"""
-			sh """
-				export SERVER_JENKINS=${SERVER_JENKINS}
-				export STC_PRIVATE_INSTALL_DIR=${STC_INSTALL}
 				/var/lib/jenkins/.pyenv/shims/behave -f cucumber -o reports/cucumber.json --junit
 			"""
 		} catch (error) {
