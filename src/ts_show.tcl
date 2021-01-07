@@ -2,9 +2,6 @@
 source "./lib/shared_libs/wc.tcl"
 set_debug 1
 
-set credentials [exec "./src/gsheet_get.py"]
-puts $credentials
-
 set ts_ip [lindex $argv 0]
 set ts_user "arcadmin"
 set ts_pass1 "arcaccess"

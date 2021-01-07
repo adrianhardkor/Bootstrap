@@ -38,8 +38,12 @@ node() {
             """
             echo "\n\n\n"
         }
+        stage("Get Gsheet Credentials") {
+           def env.User_Pass_Json = sh(returnStdout: true, script "python3 ./src/gsheet_get.py").trim()
+           User_Pass_Json = env.User_Pass_Json
+        }
         stage("AWX Runner") {
-            def awx_output = sh(script: "python3 ${orchPy} ${passthruString}", returnStdout: true)
+            def awx_output = sh(script: "python3 ${orchPy}", returnStdout: true)
             echo "${awx_output}"
         }
         stage("BDD-Behave") {
