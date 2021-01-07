@@ -94,8 +94,6 @@ node() {
             importInfo: info, 
             inputInfoSwitcher: 'fileContent', 
             serverInstance: xrayConnectorId])
-
-            echo "\n\n\n output = ${output}"
         }
     }
     catch(e) {                           
