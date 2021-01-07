@@ -19,6 +19,7 @@ handle = UNIT_ASSET.Connect(); # connect to google
 sheet = UNIT_ASSET.GET(handle)
 sheet = UNIT_ASSET.CONVERT_JSON_BY_HEADER(sheet, 'Device')
 
-for attempt in sheet.keys():
-	print(sheet[attempt])
+print(sheet)
+# for attempt in sheet.keys():
+# 	print(sheet[attempt])
 exit(0)
