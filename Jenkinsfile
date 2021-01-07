@@ -46,7 +46,8 @@ node() {
         }
         stage("AWX Runner") {
             def awx_output = sh(script: "python3 ${orchPy}", returnStdout: true)
-            echo "${awx_output} (( all jenkins_parameters provided via printenv/set ))"
+            echo "\n\n\n (( all jenkins_parameters provided via printenv/set ))"
+            echo "${awx_output}"
         }
         stage("BDD-Behave") {
             echo "\n\n\n*** BDD-Behave-Python3 on ${SERVER_JENKINS} ***"
