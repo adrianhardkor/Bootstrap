@@ -81,7 +81,7 @@ node() {
                     },
                     "labels":''' + labels + ''',
                     "description":"''' + description + '''",
-                    "summary": "''' + env.JOB_NAME + ''' - Automated Test Execution @ ''' + env.JOB_NAME + ' ' + env.BUILD_TIME + ' ' + environment + ''' " ,
+                    "summary": "''' + env.JOB_NAME + ''' Automated Test Execution @ ''' + env.BUILD_TIME + ' ' + environment + ''' " ,
                     "issuetype": {
                         "id": "''' + testExecutionFieldId + '''"
                     }
