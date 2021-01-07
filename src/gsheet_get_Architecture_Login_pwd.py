@@ -24,5 +24,4 @@ out = []
 for a in sheet.keys():
 	out.append(','.join([a.replace(' ',''),sheet[a]['Login'].replace(' ',''),sheet[a]['pwd'].replace(' ','')]))
 print('='.join(out))
-wc.jd(sheet)
 exit(0)

@@ -1,0 +1,61 @@
+{
+  "CMTS": {
+    "Device": "CMTS",
+    "Login": "root",
+    "Row": 5,
+    "pwd": "wowlabs12"
+  },
+  "EX/MX/PTX": {
+    "Device": "EX/MX/PTX",
+    "Login": "root",
+    "Row": 2,
+    "pwd": "ArcLabRoot"
+  },
+  "LX": {
+    "Device": "LX",
+    "Login": "arcadmin",
+    "Row": 3,
+    "pwd": "arcaccess"
+  },
+  "Lepton": {
+    "Device": "Lepton",
+    "Login": "lepton",
+    "Row": 4,
+    "pwd": "Lepton!"
+  },
+  "Some Junipers": {
+    "Device": "Some Junipers",
+    "Login": "ADMIN",
+    "Row": 9,
+    "pwd": "ArcLabAdmin"
+  },
+  "Spirent": {
+    "Device": "Spirent",
+    "Login": "admin",
+    "Row": 6,
+    "pwd": "spt_admin"
+  },
+  "Velocity": {
+    "Device": "Velocity",
+    "Login": "User id",
+    "Row": 7,
+    "pwd": "ArcWow1"
+  },
+  "Velocity admin": {
+    "Device": "Velocity admin",
+    "Login": "admin",
+    "Row": 8,
+    "pwd": "wowlabs12"
+  }
+}
+
+"EX/MX/PTX,root,ArcLabRoot=
+LX,arcadmin,arcaccess=
+Lepton,lepton,Lepton!=
+CMTS,root,wowlabs12=
+Spirent,admin,spt_admin=
+Velocity,Userid,ArcWow1=
+Velocityadmin,admin,wowlabs12=
+SomeJunipers,ADMIN,ArcLabAdmin
+"[0m
+
