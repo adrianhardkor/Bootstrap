@@ -8,6 +8,7 @@ global cred
 cred_array argv_array
 puts "\n\n\n"
 
+# if $argv_array(lx_port) == 0: foreach loop
 set ports [mrvTS_show $argv_array(lx_ip) $cred(LX,user) $cred(LX,pass) $cred(LX,pass15) "portinfohere"]
 puts $ports
 exit 0
