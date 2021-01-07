@@ -42,11 +42,11 @@ node() {
            def User_Pass_Json = sh(script: "python3 ./src/gsheet_get.py", returnStdout: true).trim()
            User_Pass_Json = User_Pass_Json.replaceAll("\'", "\"")
            env.User_Pass_Json = User_Pass_Json
-           echo "\n\n\n env.User_Pass_Json = ${env.User_Pass_Json}\n\n\n"
+           // echo "\n\n\n env.User_Pass_Json = ${env.User_Pass_Json}\n\n\n"
         }
         stage("AWX Runner") {
             def awx_output = sh(script: "python3 ${orchPy}", returnStdout: true)
-            echo "${awx_output}"
+            echo "${awx_output} (( all jenkins_parameters provided via printenv/set ))"
         }
         stage("BDD-Behave") {
             echo "\n\n\n*** BDD-Behave-Python3 on ${SERVER_JENKINS} ***"
