@@ -40,7 +40,7 @@ node() {
         }
         stage("Get Gsheet Credentials") {
            def User_Pass_Json = sh(script: "python3 ./src/gsheet_get.py", returnStdout: true).trim()
-           User_Pass_Json = User_Pass_Json.replaceAll("\'", "\"")
+           User_Pass_Json = User_Pass_Json.replaceAll("\'", '"')
            env.User_Pass_Json = User_Pass_Json
            // echo "\n\n\n env.User_Pass_Json = ${env.User_Pass_Json}\n\n\n"
         }
