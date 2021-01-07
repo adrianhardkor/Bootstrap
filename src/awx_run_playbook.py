@@ -13,5 +13,7 @@ ansible = awx.AWX(os.environ['AWX_IP'], os.environ['AWX_USER'], os.environ['AWX_
 
 # Run Playbook=AWX_PLAYBOOK_NAME
 # Input/Overload variables == BUBBLED TO JENKINS PARAMETERS (ENV|os.environ PROVIDED VIA JENKINSFILE)
-print(ansible.RunPlaybook(wc.env_dict['Playbook'],args=wc.env_dict))
+  # argv provided on orchPy paramater
+  # env provided via jenkins global and non-orchPy parameters
+print(ansible.RunPlaybook(wc.argv_dict['Playbook'],args=wc.env_dict))
 
