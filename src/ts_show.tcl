@@ -2,7 +2,8 @@
 source "./lib/shared_libs/wc.tcl"
 set_debug 1
 
-echo_param $argv
+global argv_array
+echo_param argv_array
 exit 0
 
 set ts_ip [lindex $argv 0]
