@@ -19,7 +19,9 @@ handle = UNIT_ASSET.Connect(); # connect to google
 sheet = UNIT_ASSET.GET(handle)
 sheet = UNIT_ASSET.CONVERT_JSON_BY_HEADER(sheet, 'Device')
 
-print(sheet)
-# for attempt in sheet.keys():
-# 	print(sheet[attempt])
+# print in way argv can understand for ts_show.tcl passed var on AWX
+out = []
+for a in sheet.keys():
+	out.append(','.join([a.replace(' ',''),sheet[a]['Login'].replace(' ',''),sheet[a]['pwd'].replace(' ','')]))
+print('='.join(out))
 exit(0)
