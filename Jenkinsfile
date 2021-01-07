@@ -39,7 +39,7 @@ node() {
             echo "\n\n\n"
         }
         stage("Get Gsheet Credentials") {
-           def User_Pass_Json = sh(script: "python3 ./src/gsheet_get.py", returnStdout: true)
+           def User_Pass_Json = sh(script: "python3 ./src/gsheet_get.py", returnStdout: true).split("\n")
            env.User_Pass_Json = User_Pass_Json
         }
         stage("AWX Runner") {
