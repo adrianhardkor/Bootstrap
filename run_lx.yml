@@ -12,7 +12,7 @@
     debug:
       var: git_response
   - name: Run local expect script via shell
-    command: expect ./src/ts_show.tcl {{ lx_ip }} {{ lx_port }}
+    command: expect ./src/ts_show.tcl lx_ip={{ lx_ip }} lx_port={{ lx_port }} cidr={{ cidr }} User_Pass_Json={{ User_Pass_Json  }}
     register: response
   - name: "Print result"
     debug:
