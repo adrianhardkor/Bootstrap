@@ -6,7 +6,7 @@ global argv_array
 global cred
 echo_param [array get argv_array]
 cred_array argv_array
-exit 0
+puts "\n\n\n"
 
 set ports [mrvTS_show $argv_array("lx_ip") $cred_array("LX,user") $cred_array("LX,pass") $cred_array("LX,pass15") "portinfohere"]
 puts $ports
