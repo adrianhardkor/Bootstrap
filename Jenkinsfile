@@ -39,9 +39,7 @@ node() {
             echo "\n\n\n"
         }
         stage("AWX Runner") {
-            def awx_output = sh(script: "python3 ${orchPy} ${passthruString}", returnStdout: true).split('\n')
-            awx_output.set(0, "python3 ${orchPy}");
-            awx_output = awx_output.join('\n');
+            def awx_output = sh(script: "python3 ${orchPy} ${passthruString}", returnStdout: true)
             echo "${awx_output}"
         }
         stage("BDD-Behave") {
