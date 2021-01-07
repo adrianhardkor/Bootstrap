@@ -22,7 +22,7 @@ node() {
             echo "Build time:" + env.BUILD_TIME
         }
         stage('Checkout Self') {
-           echo "\n\n\n GIT CLONE STAGE"
+            echo "\n\n\n GIT CLONE STAGE"
             def url = "${scm.userRemoteConfigs}"
             def repoURL = url.split(" ")[2]
             def branches = scm.branches[0].name
@@ -39,8 +39,8 @@ node() {
             echo "\n\n\n"
         }
         stage("Get Gsheet Credentials") {
-           def User_Pass_Json = sh(script: "python3 ./src/gsheet_get.py", returnStdout: true)
-           User_Pass_Json = "User_Pass_Json=" + User_Pass_Json.replaceAll('\n',' ')
+           def User_Pass_Json = sh(script: "python3 ./src/gsheet_get.py", returnStdout: true).trim()
+           User_Pass_Json = User_Pass_Json.replaceAll('\n',', ')
            env.User_Pass_Json = User_Pass_Json
            echo "\n\n\n env.User_Pass_Json = ${env.User_Pass_Json}\n\n\n"
         }
