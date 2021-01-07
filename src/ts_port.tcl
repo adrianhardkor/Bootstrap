@@ -10,3 +10,4 @@ set ts_port [lindex $argv 1]
 
 set output [mrvTS $ts_ip $ts_user $ts_pass1 $ts_pass2 $ts_port {timeout 20}]
 echo_param [list "Script Runtime" [timer_index_since SCRIPT]\ms]
+
