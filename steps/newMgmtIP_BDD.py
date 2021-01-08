@@ -11,7 +11,7 @@ wc.wcheader['packages']['wc'] = wc.__file__
 from behave import given, when, then
 from hamcrest import assert_that, equal_to, is_not
 
-print(wc.exec2('./features/*.feature'))
+print(wc.exec2('cat ./features/*.feature'))
 
 @given(u'Bootstrap Ran')
 def step_impl(context):
