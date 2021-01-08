@@ -5,7 +5,7 @@ sys.path.insert(1, './lib/shared_libs/')
 import wcommon as wc
 wc.jenkins_header(); # load inputs from Jenkinsfile
 wc.wcheader['packages']['wc'] = wc.__file__
-wc.jd(wc.wcheader)
+# wc.jd(wc.wcheader)
 # wc.jd(wc.env_dict)
 
 from behave import given, when, then
