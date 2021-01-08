@@ -12,7 +12,7 @@ SAMPLE_SPREADSHEET_ID = '1lChMjk1OMyZlEmX8TqUjHOwILoBSnCUpm4evrPvLork'
 SAMPLE_RANGE_NAME = 'Login_pwd'
 
 # build class
-UNIT_ASSET = wgcp.GCP(SAMPLE_SPREADSHEET_ID, SAMPLE_RANGE_NAME, SCOPES, './src/runner.pickle', './src/credentials.json')
+UNIT_ASSET = wgcp.GCP(SAMPLE_SPREADSHEET_ID, SAMPLE_RANGE_NAME, SCOPES, './src/runner.pickle', '/opt/google/credentials.json')
 handle = UNIT_ASSET.Connect(); # connect to google
 
 # CONVERT GSHEET AND SORT BY 'IP'
