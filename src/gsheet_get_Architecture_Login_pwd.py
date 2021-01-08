@@ -11,8 +11,9 @@ SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 SAMPLE_SPREADSHEET_ID = '1lChMjk1OMyZlEmX8TqUjHOwILoBSnCUpm4evrPvLork'
 SAMPLE_RANGE_NAME = 'Login_pwd'
 
+creds_path = '/opt/google/'
 # build class
-UNIT_ASSET = wgcp.GCP(SAMPLE_SPREADSHEET_ID, SAMPLE_RANGE_NAME, SCOPES, './src/runner.pickle', '/opt/google/credentials.json')
+UNIT_ASSET = wgcp.GCP(SAMPLE_SPREADSHEET_ID, SAMPLE_RANGE_NAME, SCOPES, creds_path + 'runner.pickle', creds_path + 'credentials.json')
 handle = UNIT_ASSET.Connect(); # connect to google
 
 # CONVERT GSHEET AND SORT BY 'IP'
