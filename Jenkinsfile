@@ -49,7 +49,7 @@ node() {
         }
         stage("AWX Runner") {
             def awx_output = sh(script: "python3 ${orchPy} ${paramsString}", returnStdout: true)
-            def awx_output_xray = formatXray(awx_output, '\n')
+            env.awx_output_xray = formatXray(awx_output, '\n')
             echo "${awx_output}"
         }
         stage("BDD-Behave") {
@@ -76,7 +76,7 @@ node() {
         }
         stage('Import results to Xray') {
             echo "*** Import Results to XRAY ***"
-            def description = "[${env.JOB_NAME} Test Report|${env.BUILD_URL}/cucumber-html-reports/overview-features.html] \\n \\n INPUTS:${paramsStringXray} \\n OUTPUTS:${awx_output_xray} "
+            def description = "[${env.JOB_NAME} Test Report|${env.BUILD_URL}/cucumber-html-reports/overview-features.html] \\n \\n INPUTS:${paramsStringXray} \\n OUTPUTS:${env.awx_output_xray} "
             def labels = '["regression","automated_regression"]'
             def environment = "DEV"
             def testExecutionFieldId = 10552
