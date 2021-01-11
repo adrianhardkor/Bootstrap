@@ -7,6 +7,7 @@ node() {
         passthruString = passthruString.replaceAll('\n',' ')
         def paramsString = params.toString().replaceAll("[\\[\\](){}]","")
         paramsString = paramsString.replaceAll(', ',' ')
+        def paramsStringXray = paramsString.replaceAll(' ',"\\n")
         def HUDSON_URL = "${env.HUDSON_URL}"
         def SERVER_JENKINS = ""
         if (HUDSON_URL.contains("10.88.48.21")) {
@@ -48,6 +49,7 @@ node() {
         }
         stage("AWX Runner") {
             def awx_output = sh(script: "python3 ${orchPy} ${paramsString}", returnStdout: true)
+            def awx_output_xray = awx_output.replaceAll("\n","\\n")
             echo "${awx_output}"
         }
         stage("BDD-Behave") {
@@ -74,7 +76,7 @@ node() {
         }
         stage('Import results to Xray') {
             echo "*** Import Results to XRAY ***"
-            def description = "[${env.JOB_NAME} Test Report|${env.BUILD_URL}/cucumber-html-reports/overview-features.html]  \\n \\n   INPUTS: ${paramsString} " 
+            def description = "[${env.JOB_NAME} Test Report|${env.BUILD_URL}/cucumber-html-reports/overview-features.html] \\n \\n INPUTS:\\n ${paramsStringXray}" 
             def labels = '["regression","automated_regression"]'
             def environment = "DEV"
             def testExecutionFieldId = 10552
