@@ -7,7 +7,7 @@ node() {
         passthruString = passthruString.replaceAll('\n',' ')
         def paramsString1 = params.toString().replaceAll("[\\[\\](){}]","")
         paramsString = paramsString1.replaceAll(', ',' ')
-        def paramsStringXray = paramsString1.replaceAll(', ','\\n - ')
+        def paramsStringXray = formatXray(paramsString1, ', ')
         def HUDSON_URL = "${env.HUDSON_URL}"
         def SERVER_JENKINS = ""
         if (HUDSON_URL.contains("10.88.48.21")) {
@@ -115,6 +115,13 @@ node() {
         echo "I AM HERE"
         notifyBuild(currentBuild.result)
     }
+}
+def formatXray(input_string, String delimiter = "\n") {
+    result = ""
+    for(str line in input_string.split(delimiter)) {
+        result = result + "\\n" + line
+    }
+    return result
 }
 def notifyBuild(String buildStatus = 'STARTED') {
     // build status of null means successful
