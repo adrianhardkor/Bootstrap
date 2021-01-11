@@ -76,7 +76,8 @@ node() {
             def description = "[${env.JOB_NAME} Test Report|${env.BUILD_URL}/cucumber-html-reports/overview-features.html]"
             def labels = '["regression","automated_regression"]'
             def environment = "DEV"
-            def testExecutionFieldId = 10552 def testEnvironmentFieldName = "customfield_10372"
+            def testExecutionFieldId = 10552
+            def testEnvironmentFieldName = "customfield_10372"
             def projectKey = "XT"
             def projectId = 10606
             def xrayConnectorId = "${xrayConnectorId}"
