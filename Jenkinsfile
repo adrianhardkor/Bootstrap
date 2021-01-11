@@ -6,7 +6,7 @@ node() {
         def passthruString = sh(script: "printenv", returnStdout: true)
         passthruString = passthruString.replaceAll('\n',' ')
         def paramsString = params.toString()
-        echo "${paramsString} \n \n\n\n"
+        paramsString = paramsString.replaceAll(', ',' ')
         def HUDSON_URL = "${env.HUDSON_URL}"
         def SERVER_JENKINS = ""
         if (HUDSON_URL.contains("10.88.48.21")) {
@@ -75,7 +75,7 @@ node() {
         }
         stage('Import results to Xray') {
             echo "*** Import Results to XRAY ***"
-            def description = "[${env.JOB_NAME} Test Report|${env.BUILD_URL}/cucumber-html-reports/overview-features.html]  \r\r  INPUTS: ${passthruString} " 
+            def description = "[${env.JOB_NAME} Test Report|${env.BUILD_URL}/cucumber-html-reports/overview-features.html]  \\n \\n   INPUTS: ${paramsString} " 
             def labels = '["regression","automated_regression"]'
             def environment = "DEV"
             def testExecutionFieldId = 10552
