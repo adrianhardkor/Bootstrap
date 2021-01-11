@@ -5,7 +5,7 @@ node() {
         notifyBuild('STARTED')
         def passthruString = sh(script: "printenv", returnStdout: true)
         passthruString = passthruString.replaceAll('\n',' ')
-        def paramsString = params.toString()
+        def paramsString = params.toString().trim()
         paramsString = paramsString.replaceAll(', ',' ')
         def HUDSON_URL = "${env.HUDSON_URL}"
         def SERVER_JENKINS = ""
