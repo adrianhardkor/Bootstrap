@@ -87,7 +87,7 @@ node() {
                         "id": "''' + projectId + '''"
                     },
                     "labels":''' + labels + ''',
-                    "description":"''' + description + ''' Jenkins Variables: \n ''' + passthruString + '''",
+                    "description":"''' + description + ''' Jenkins Variables: ''' + passthruString + ''' ",
                     "summary": "''' + env.JOB_NAME + ''' Automated Test Execution @ ''' + env.BUILD_TIME + ' ' + environment + ''' " ,
                     "issuetype": {
                         "id": "''' + testExecutionFieldId + '''"
