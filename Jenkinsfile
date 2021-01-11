@@ -73,7 +73,7 @@ node() {
         }
         stage('Import results to Xray') {
             echo "*** Import Results to XRAY ***"
-            def description = "[${env.JOB_NAME} Test Report|${env.BUILD_URL}/cucumber-html-reports/overview-features.html]"
+            def description = "[${env.JOB_NAME} Test Report|${env.BUILD_URL}/cucumber-html-reports/overview-features.html] \n INPUTS: ${passthruString} " 
             def labels = '["regression","automated_regression"]'
             def environment = "DEV"
             def testExecutionFieldId = 10552
@@ -87,9 +87,7 @@ node() {
                         "id": "''' + projectId + '''"
                     },
                     "labels":''' + labels + ''',
-                    "description":"''' + description + ''' 
-                                       Jenkins Variables:
-                                       ''' + passthruString + '''",
+                    "description":"''' + description + '''",
                     "summary": "''' + env.JOB_NAME + ''' Automated Test Execution @ ''' + env.BUILD_TIME + ' ' + environment + ''' " ,
                     "issuetype": {
                         "id": "''' + testExecutionFieldId + '''"
