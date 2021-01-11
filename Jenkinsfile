@@ -119,7 +119,7 @@ node() {
 def formatXray(input_string, String delimiter = "\n") {
     result = ""
     for(line in input_string.split(delimiter)) {
-        result = result + "\\n" + line
+        result = result.replaceAll("\t","    ") + "\\n" + line
     }
     return result
 }
