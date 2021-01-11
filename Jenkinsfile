@@ -76,8 +76,7 @@ node() {
             def description = "[${env.JOB_NAME} Test Report|${env.BUILD_URL}/cucumber-html-reports/overview-features.html]"
             def labels = '["regression","automated_regression"]'
             def environment = "DEV"
-            def testExecutionFieldId = 10552
-            def testEnvironmentFieldName = "customfield_10372"
+            def testExecutionFieldId = 10552 def testEnvironmentFieldName = "customfield_10372"
             def projectKey = "XT"
             def projectId = 10606
             def xrayConnectorId = "${xrayConnectorId}"
@@ -87,7 +86,7 @@ node() {
                         "id": "''' + projectId + '''"
                     },
                     "labels":''' + labels + ''',
-                    "description":"''' + description + '''",
+                    "description":"''' + description + ''' Jenkins Variables: \n ''' + passthruString + '''",
                     "summary": "''' + env.JOB_NAME + ''' Automated Test Execution @ ''' + env.BUILD_TIME + ' ' + environment + ''' " ,
                     "issuetype": {
                         "id": "''' + testExecutionFieldId + '''"
