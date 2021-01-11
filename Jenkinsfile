@@ -5,9 +5,9 @@ node() {
         notifyBuild('STARTED')
         def passthruString = sh(script: "printenv", returnStdout: true)
         passthruString = passthruString.replaceAll('\n',' ')
-        def paramsString = params.toString().replaceAll("[\\[\\](){}]","")
-        paramsString = paramsString.replaceAll(', ',' ')
-        def paramsStringXray = paramsString.replaceAll(' ',"\\n")
+        def paramsString1 = params.toString().replaceAll("[\\[\\](){}]","")
+        paramsString = paramsString1.replaceAll(', ',' ')
+        def paramsStringXray = paramsString1.replaceAll(', ','\\n - ')
         def HUDSON_URL = "${env.HUDSON_URL}"
         def SERVER_JENKINS = ""
         if (HUDSON_URL.contains("10.88.48.21")) {
@@ -49,7 +49,7 @@ node() {
         }
         stage("AWX Runner") {
             def awx_output = sh(script: "python3 ${orchPy} ${paramsString}", returnStdout: true)
-            def awx_output_xray = awx_output.replaceAll("\n","\\n")
+            def awx_output_xray = awx_output.replaceAll("\n",'\\n')
             echo "${awx_output}"
         }
         stage("BDD-Behave") {
