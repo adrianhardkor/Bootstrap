@@ -15,4 +15,5 @@ behave2cucumber
 argparse
 jsonschema
 PyHamcrest
+beautifulsoup4
 behave-py3
