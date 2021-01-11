@@ -47,8 +47,7 @@ node() {
            // echo "\n\n\n env.User_Pass_Json = ${env.User_Pass_Json}\n\n\n"
         }
         stage("AWX Runner") {
-            def awx_output = sh(script: "python3 ${orchPy}", returnStdout: true)
-            echo "\n\n\n (( all jenkins_parameters provided via printenv/set ))"
+            def awx_output = sh(script: "python3 ${orchPy} ${paramsString}", returnStdout: true)
             echo "${awx_output}"
         }
         stage("BDD-Behave") {
