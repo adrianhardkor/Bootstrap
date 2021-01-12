@@ -9,7 +9,6 @@ node() {
         paramsString = paramsString1.replaceAll(', ',' ')
         def paramsStringXray = formatXray(paramsString1, ', ')
         def HUDSON_URL = "${env.HUDSON_URL}"
-        def xrayConnectorIdUser sh(returnStdout: true, script: "python3 ./src/XRAY_CONFIG.py server=localhost user=akrygows").trim()
         def SERVER_JENKINS = ""
         if (HUDSON_URL.contains("10.88.48.21")) {
             SERVER_JENKINS = "WOPR-SB"
@@ -18,6 +17,7 @@ node() {
         }
         echo "env.BUILD_USER_ID = ${env.BUILD_USER_ID}"
         echo "env.BUILD_USER = ${env.BUILD_USER}"
+        def xrayConnectorIdUser = sh(script: "python3 ./src/XRAY_CONFIG.py server=localhost user=${env.BUILD_USER}", returnStdout: true).trim()
         stage("Prepare Workspace") {
             echo "*** Prepare Workspace ***"
             cleanWs()
