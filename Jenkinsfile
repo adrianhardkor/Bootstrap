@@ -24,7 +24,6 @@ node() {
             echo "Workspace set to:" + env.WORKSPACE_LOCAL
             echo "Build time:" + env.BUILD_TIME
         }
-        echo "xrayConnectorIdUser = ${xrayConnectorIdUser}"
         stage('Checkout Self') {
             echo "\n\n\n GIT CLONE STAGE"
             def url = "${scm.userRemoteConfigs}"
