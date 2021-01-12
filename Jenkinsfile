@@ -18,18 +18,11 @@ node() {
         stage("Prepare Workspace") {
             echo "*** Prepare Workspace ***"
             cleanWs()
-            sh "ls -l; ls -l ./src/"
+            sh "ls -l"
             env.WORKSPACE_LOCAL = sh(returnStdout: true, script: 'pwd').trim()
             env.BUILD_TIME = "${BUILD_TIMESTAMP}"
             echo "Workspace set to:" + env.WORKSPACE_LOCAL
             echo "Build time:" + env.BUILD_TIME
-        }
-        wrap([$class: 'BuildUser']) {
-            def BUILD_USER_ID = env.BUILD_USER_ID
-            def BUILD_USER = env.BUILD_USER
-            echo "BUILD_USER_ID = ${BUILD_USER_ID}"
-            echo "BUILD_USER = ${BUILD_USER}"
-            def xrayConnectorIdUser = sh(script: "python3 ./src/XRAY_CONFIG.py server=localhost user=${BUILD_USER_ID}", returnStdout: true).trim()
         }
         echo "xrayConnectorIdUser = ${xrayConnectorIdUser}"
         stage('Checkout Self') {
@@ -49,6 +42,14 @@ node() {
             """
             echo "\n\n\n"
         }
+        wrap([$class: 'BuildUser']) {
+            def BUILD_USER_ID = env.BUILD_USER_ID
+            def BUILD_USER = env.BUILD_USER
+            echo "BUILD_USER_ID = ${BUILD_USER_ID}"
+            echo "BUILD_USER = ${BUILD_USER}"
+            def xrayConnectorIdUser = sh(script: "python3 ./src/XRAY_CONFIG.py server=localhost user=${BUILD_USER_ID}", returnStdout: true).trim()
+        }
+        echo "xrayConnectorIdUser = ${xrayConnectorIdUser}"
         stage("Get Gsheet Credentials") {
            def User_Pass_Json = sh(script: "python3 ./src/gsheet_get_Architecture_Login_pwd.py", returnStdout: true).trim()
            // User_Pass_Json = User_Pass_Json.replaceAll("\'", '"')
