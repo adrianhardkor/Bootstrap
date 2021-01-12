@@ -9,12 +9,15 @@ node() {
         paramsString = paramsString1.replaceAll(', ',' ')
         def paramsStringXray = formatXray(paramsString1, ', ')
         def HUDSON_URL = "${env.HUDSON_URL}"
+        def xrayConnectorIdUser sh(returnStdout: true, script: "python3 ./src/XRAY_CONFIG.py server=localhost user=akrygows").trim()
         def SERVER_JENKINS = ""
         if (HUDSON_URL.contains("10.88.48.21")) {
             SERVER_JENKINS = "WOPR-SB"
         } else {
             SERVER_JENKINS = "WOPR-PROD-JENKINS"
-        }       
+        }
+        echo "env.BUILD_USER_ID = ${env.BUILD_USER_ID}"
+        echo "env.BUILD_USER = ${env.BUILD_USER}"
         stage("Prepare Workspace") {
             echo "*** Prepare Workspace ***"
             cleanWs()
@@ -83,7 +86,7 @@ node() {
             def testEnvironmentFieldName = "customfield_10372"
             def projectKey = "XT"
             def projectId = 10606
-            def xrayConnectorId = "${xrayConnectorId}"
+            def xrayConnectorId = "${xrayConnectorIdUser}"
             def info = '''{
                 "fields": {
                     "project": {

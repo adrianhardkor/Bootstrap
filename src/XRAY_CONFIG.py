@@ -1,11 +1,13 @@
-#!/usr/local/bin/python3
+#!/usr/bin/python3
+import sys
+sys.path.insert(1, './lib/shared_libs/')
 import wcommon as wc
 # wc.jd(wc.wcheader)
 
 from bs4 import BeautifulSoup
 
-
-data = wc.exec2('curl -s --netrc-file /opt/self.creds http://10.88.48.21:8080/configure')
+user = wc.argv_dict['user']
+data = wc.exec2('curl -s --netrc-file /opt/self.creds http://%s:8080/configure' % wc.argv_dict['server'])
 
 result = {}
 parsed = BeautifulSoup(data, features="html.parser")
@@ -33,4 +35,5 @@ for line in parsed.find_all('input'):
 			except Exception:
 				pass	
 	
-wc.jd(result)
+# wc.jd(result)
+print(result[user + '-Xray']['xrayConnectorId'])
