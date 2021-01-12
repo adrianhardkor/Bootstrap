@@ -15,7 +15,6 @@ node() {
         } else {
             SERVER_JENKINS = "WOPR-PROD-JENKINS"
         }
-        echo "xrayConnectorIdUser = ${xrayConnectorIdUser}"
         stage("Prepare Workspace") {
             echo "*** Prepare Workspace ***"
             cleanWs()
@@ -32,6 +31,7 @@ node() {
             echo "BUILD_USER = ${BUILD_USER}"
             def xrayConnectorIdUser = sh(script: "python3 ./src/XRAY_CONFIG.py server=localhost user=${BUILD_USER_ID}", returnStdout: true).trim()
         }
+        echo "xrayConnectorIdUser = ${xrayConnectorIdUser}"
         stage('Checkout Self') {
             echo "\n\n\n GIT CLONE STAGE"
             def url = "${scm.userRemoteConfigs}"
