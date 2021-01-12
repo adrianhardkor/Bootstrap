@@ -20,8 +20,6 @@ puts "\n\n\n"
 
 
 
-
-
 set PORTLIST [mrvTS_getports $argv_array(lx_ip) $cred(LX,user) $cred(LX,pass) $cred(LX,pass15) $argv_array(lx_port)]
 
 # GET STATE
@@ -29,6 +27,7 @@ foreach P $PORTLIST {
   set ports [mrvTS $argv_array(lx_ip) $cred(LX,user) $cred(LX,pass) $cred(LX,pass15) $P {tryMeCreds $argv_array}]
   # puts $ports
   puts [join [list $argv_array(lx_ip) $P [grep BAREMETAL $ports]] "\t"]
+  # if {[string match "*EMPTY*" [grep BAREMETAL $ports]]} {exit 5}
 }
 exit 0
 
