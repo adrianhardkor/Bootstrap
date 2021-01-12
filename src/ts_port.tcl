@@ -2,12 +2,14 @@
 source "./lib/shared_libs/wc.tcl"
 set_debug 1
 
-set ts_ip [lindex $argv 0]
-set ts_user "InReach"
-set ts_pass1 "access"
-set ts_pass2 "system"
-set ts_port [lindex $argv 1]
+global argv_array
+global cred
+# echo_param [array get argv_array]
+cred_array argv_array
+puts "\n\n\n"
 
-set output [mrvTS $ts_ip $ts_user $ts_pass1 $ts_pass2 $ts_port {timeout 20}]
-echo_param [list "Script Runtime" [timer_index_since SCRIPT]\ms]
+# if $argv_array(lx_port) == 0: foreach loop
+set ports [mrvTS $argv_array(lx_ip) $cred(LX,user) $cred(LX,pass) $cred(LX,pass15) $argv_array(lx_port)]
+puts $ports
+exit 0
 

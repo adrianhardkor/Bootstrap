@@ -15,9 +15,13 @@ node() {
         } else {
             SERVER_JENKINS = "WOPR-PROD-JENKINS"
         }
-        echo "env.BUILD_USER_ID = ${env.BUILD_USER_ID}"
-        echo "env.BUILD_USER = ${env.BUILD_USER}"
-        def xrayConnectorIdUser = sh(script: "python3 ./src/XRAY_CONFIG.py server=localhost user=${env.BUILD_USER}", returnStdout: true).trim()
+        wrap([$class: 'BuildUser']) {
+            def BUILD_USER_ID = env.BUILD_USER_ID
+            def BUILD_USER = env.BUILD_USER
+            echo "BUILD_USER_ID = ${BUILD_USER_ID}"
+            echo "BUILD_USER = ${BUILD_USER}"
+            def xrayConnectorIdUser = sh(script: "python3 ./src/XRAY_CONFIG.py server=localhost user=${env.BUILD_USER}", returnStdout: true).trim()
+        }
         stage("Prepare Workspace") {
             echo "*** Prepare Workspace ***"
             cleanWs()
