@@ -46,6 +46,7 @@ node() {
             def BUILD_USER = env.BUILD_USER
             echo "BUILD_USER_ID = ${BUILD_USER_ID}"
             echo "BUILD_USER = ${BUILD_USER}"
+            sh "python3 -m pip install -r formatters/requirements.txt"
             def xrayConnectorIdUser = sh(script: "python3 ./src/XRAY_CONFIG.py server=localhost user=${BUILD_USER_ID}", returnStdout: true).trim()
         }
         echo "xrayConnectorIdUser = ${xrayConnectorIdUser}"
