@@ -128,6 +128,7 @@ def formatXray(input_string, String delimiter = "\n") {
     result = ""
     for(line in input_string.split(delimiter)) {
         result = result.replaceAll("\t","    ") + "\\n" + line
+        // single to double / for all
     }
     return result
 }
