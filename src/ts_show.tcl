@@ -1,6 +1,6 @@
 #!/usr/bin/expect
 source "./lib/shared_libs/wc.tcl"
-set_debug 0
+http://10.88.48.21:8080/job/Bootstrap/build?delay=0secset_debug 0
 
 global argv_array
 global cred
@@ -16,8 +16,9 @@ set PORTLIST [mrvTS_getports $argv_array(lx_ip) $cred(LX,user) $cred(LX,pass) $c
 
 # GET STATE
 foreach P $PORTLIST {
+  set_debug 0
   set ports [mrvTS $argv_array(lx_ip) $cred(LX,user) $cred(LX,pass) $cred(LX,pass15) $P {tryMeCreds $argv_array}]
   puts [join [list $argv_array(lx_ip) $P [grep BAREMETAL $ports]] "    "]
 }
-
+puts "TCL Runtime: [timer_index_since SCRIPT]"
 exit 0
