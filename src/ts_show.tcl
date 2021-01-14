@@ -1,6 +1,5 @@
 #!/usr/bin/expect
 source "./lib/shared_libs/wc.tcl"
-http://10.88.48.21:8080/job/Bootstrap/build?delay=0secset_debug 0
 
 global argv_array
 global cred
