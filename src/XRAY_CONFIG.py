@@ -34,6 +34,8 @@ for line in parsed.find_all('input'):
 				result[out['value']] = out
 			except Exception:
 				pass	
-	
-# wc.jd(result)
-print(result[user + '-Xray']['xrayConnectorId'])
+
+if user + '-Xray' in result.keys():	
+	print(result[user + '-Xray']['xrayConnectorId'])
+else:
+	print('81980372-6ec2-4708-8f2d-3536cb95fd59')
