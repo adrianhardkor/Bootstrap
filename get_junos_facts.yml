@@ -1,14 +1,22 @@
 ---
-- name: Get Device Facts
-  hosts: all
-  roles:
-    - Juniper.junos
-  gather_facts: yes
-  connection: local
-
+- name: Get junos facts.
+  hosts: ARCUAT1HUHCMR02
+  gather_facts: no
   tasks:
-    - name: Retrieve facts from device running Junos OS
-      juniper_junos_facts:
-    - name: Print version
-      debug:
-        var: junos.version
+    - name: Gather facts (junos)
+      junipernetworks.junos.junos_facts:
+        gather_network_resources:
+          #- 'acl_interfaces'
+          #- 'acls'
+          #- 'interfaces'
+          #- 'l2_interfaces'
+          #- 'l3_interfaces'
+          #- 'lacp'
+          #- 'lacp_interfaces'
+          #- 'lag_interfaces'
+          #- 'lldp_global'
+          #- 'lldp_interfaces'
+          #- 'ospf'
+          #- 'ospfv3'
+          #- 'static_routes'
+          #- 'vlans'
