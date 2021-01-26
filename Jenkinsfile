@@ -46,7 +46,7 @@ node() {
             def BUILD_USER = env.BUILD_USER
             echo "BUILD_USER_ID = ${BUILD_USER_ID}"
             echo "BUILD_USER = ${BUILD_USER}"
-            env.xrayConnectorIdUser = sh(script: "python3 ./src/XRAY_CONFIG.py server=localhost user=${BUILD_USER_ID}", returnStdout: true).trim()
+            env.xrayConnectorIdUser = sh(script: "python3 ./lib/shared_libs/XRAY_CONFIG.py server=localhost user=${BUILD_USER_ID}", returnStdout: true).trim()
         }
         echo "xrayConnectorIdUser = ${env.xrayConnectorIdUser}"
         stage("Get Gsheet Credentials") {
