@@ -19,7 +19,7 @@ handle = UNIT_ASSET.Connect(); # connect to google
 # CONVERT GSHEET AND SORT BY 'IP'
 sheet = UNIT_ASSET.GET(handle)
 sheet = UNIT_ASSET.CONVERT_JSON_BY_HEADER(sheet, 'Device')
-
+wc.jd(sheet)
 # print in way argv can understand for ts_show.tcl passed var on AWX
 out = []
 for a in sheet.keys():
