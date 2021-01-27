@@ -4,7 +4,7 @@ node() {
     try {
         notifyBuild('STARTED')
         def passthruString = sh(script: "printenv", returnStdout: true)
-        passthruString = passthruString.replaceAll('\n',' ')
+        passthruString = passthruString.replaceAll('\n',' ').trim()
         def paramsString1 = params.toString().replaceAll("[\\[\\](){}]","")
         paramsString = paramsString1.replaceAll(', ',' ')
         def paramsStringXray = formatXray(paramsString1, ', ')
