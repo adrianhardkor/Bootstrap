@@ -1,6 +1,7 @@
 ---
 - name: Run local expect script via shell
   hosts: DUMMY
+  connection: local
   gather_facts: no
   tasks:
   - name: CLONE THE ARC-SHARED REPO
