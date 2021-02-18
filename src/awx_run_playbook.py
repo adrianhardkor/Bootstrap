@@ -16,3 +16,4 @@ ansible = awx.AWX(os.environ['AWX_IP'], os.environ['AWX_USER'], os.environ['AWX_
   # argv provided on orchPy paramater
   # env provided via jenkins global and non-orchPy parameters
 result,out = ansible.RunPlaybook(wc.argv_dict['Playbook'],args=wc.env_dict)
+wc.jd(ansible.data)
