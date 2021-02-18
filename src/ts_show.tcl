@@ -3,7 +3,7 @@ source "./lib/shared_libs/wc.tcl"
 
 global argv_array
 global cred
-# echo_param [array get argv_array]
+echo_param [array get argv_array]
 cred_array argv_array
 
 # if $argv_array(lx_port) == 0: foreach loop
