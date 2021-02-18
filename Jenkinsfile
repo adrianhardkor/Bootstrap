@@ -38,8 +38,8 @@ node() {
                 git clone ${GIT_SHARED_LIB}
                 cd ..
                 ls -l
-            ""
-            def req = sh(script: "python3 -m pip install -r ./lib/shared_libs/requirements.txt", returnStdout: true).trim()"
+            """
+            def req = sh(script: "python3 -m pip install -r ./lib/shared_libs/requirements.txt", returnStdout: true).trim()
             echo "\n\n\n"
         }
         wrap([$class: 'BuildUser']) {
